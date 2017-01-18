@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1026450423308",
+    "firebase_url": "https://once-upon-a-time-e0084.firebaseio.com",
+    "project_id": "once-upon-a-time-e0084",
+    "storage_bucket": "once-upon-a-time-e0084.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026450423308:android:396a4464a5f9c12a",
+        "android_client_info": {
+          "package_name": "com.example.floris.onceuponatime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026450423308-iehge7j6r0gg3hrsnprqbfbcq1d82ff6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGyOOw3aAl4vUt57uIHkVc6yH9fDXFqQk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
