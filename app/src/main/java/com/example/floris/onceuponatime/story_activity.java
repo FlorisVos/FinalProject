@@ -22,8 +22,6 @@ public class story_activity extends AppCompatActivity {
     private Typewriter StoryText1;
     private Button Choice1Btn;
     private Button Choice2Btn;
-    private Button Choice3Btn;
-    private Button Choice4Btn;
 //    private ScrollView scroll;
 //    private Firebase mRef;
     public static final String MY_PREFS_NAME = "MyPrefsFile";
@@ -34,24 +32,14 @@ public class story_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story_activity);
-//        Firebase.setAndroidContext(this);
         final Story writer = new Story();
-        getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        final Choice choiceManager = new Choice();
+//        getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String restoredText = prefs.getString("name", null);
-        if (restoredText != null) {
-            final String name = prefs.getString("name", "No name defined");//"No name defined" is the default value.
-            int idName = prefs.getInt("idName", 0);
-            Log.d("LOGTAG: Name", name);}
-//        scroll = (ScrollView) findViewById(R.id.scrollView);
-//        mRef = new Firebase("https://once-upon-a-time-e0084.firebaseio.com/");
-
-
 
         Choice1Btn = (Button) findViewById(R.id.Choice1);
         Choice2Btn = (Button) findViewById(R.id.Choice2);
-        Choice3Btn = (Button) findViewById(R.id.button3);
-        Choice4Btn = (Button) findViewById(R.id.button4);
+
         String filename = getIntent().getStringExtra("filename");
         String previous_activity = getIntent().getStringExtra("previous_activity");
         Log.d("StatusTAG:",previous_activity);
@@ -66,6 +54,22 @@ public class story_activity extends AppCompatActivity {
             storyText.setText("");
             storyText.setCharacterDelay(150);
             storyText.animateText(loaded_story);
+            String[] choices = choiceManager.choice(progress.length());
+            Choice1Btn.setText(choices[0]);
+            Choice2Btn.setText(choices[1]);
+        }
+        else{
+                        String story1 = writer.WriteStory("1");
+            storyText = (Typewriter) findViewById(R.id.StoryText);
+            storyText.setMovementMethod(new ScrollingMovementMethod());
+            storyText.setText("");
+            storyText.setCharacterDelay(150);
+            storyText.animateText(story1);
+            String[] choices = choiceManager.choice(1);
+            Log.d("ChoiceLOG",choices[0]);
+
+            Choice1Btn.setText(choices[0]);
+            Choice2Btn.setText(choices[1]);
         }
 ////        scroll.postDelayed(new Runnable() {
 ////            @Override

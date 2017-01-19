@@ -43,24 +43,9 @@
                 android:id="@+id/StoryText1"
                 android:textSize="24sp" />
 
-            <Button
-                android:text=">>"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/button5" />
-
         </LinearLayout>
 
     <!--</ScrollView>-->
-
-    <Button
-        android:id="@+id/Choice1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="choice1"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp" />
 
     <Button
         android:text="choice2"
@@ -73,24 +58,15 @@
         android:layout_toEndOf="@+id/Choice1" />
 
     <Button
-        android:text="Choice3"
+        android:id="@+id/Choice1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Choice1"
-        android:layout_alignLeft="@+id/Choice1"
-        android:layout_alignStart="@+id/Choice1"
-        android:layout_marginTop="23dp"
-        android:id="@+id/button3" />
-
-    <Button
-        android:text="Choice4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button3"
-        android:layout_toRightOf="@+id/button3"
-        android:layout_toEndOf="@+id/button3"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:id="@+id/button4" />
+        android:text="choice1"
+        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="116dp"
+        android:layout_marginStart="116dp" />
 
 </RelativeLayout>
