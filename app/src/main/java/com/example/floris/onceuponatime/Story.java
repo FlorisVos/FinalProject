@@ -11,13 +11,19 @@ import org.w3c.dom.Text;
 
 public class Story {
 
-    public String WriteStory1() {
+    public String WriteStory(String i) {
+        if (i.equals("1")) {
             return "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    }
-    public String WriteStory2() {
-        return "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
-    }
-    public   String WriteStory3() {
-        return "ccccccccccccccccccccccccccccccccccccccccccccccccccccc";
+        }
+        if (i.equals("2")) {
+            return "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+        }
+        if (i.equals("3")) {
+            return "ccccccccccccccccccccccccccccccccccccccccccccccccccccc";
+        }
+        if (i.equals("4")){
+            return "dddddddddddddddddddddddddddddddd";
+        }
+        return "";
     }
 }

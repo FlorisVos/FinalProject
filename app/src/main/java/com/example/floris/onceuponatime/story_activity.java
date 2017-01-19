@@ -58,75 +58,82 @@ public class story_activity extends AppCompatActivity {
         if(previous_activity.equals("fileselect")){
             String progress = prefs.getString(filename,"");
             Log.d("ProgRESs TAG:", progress);
+            LoadFile loadFile = new LoadFile();
+            String loaded_story = loadFile.Load_File(progress);
+            Log.d("loadedTAG:", loaded_story);
+            storyText = (Typewriter) findViewById(R.id.StoryText);
+            storyText.setMovementMethod(new ScrollingMovementMethod());
+            storyText.setText("");
+            storyText.setCharacterDelay(150);
+            storyText.animateText(loaded_story);
         }
-//        scroll.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                //replace this line to scroll up or down
-//                scroll.fullScroll(ScrollView.FOCUS_DOWN);
-//            }
-//        }, 100L);
-        String story1 = writer.WriteStory1();
-        storyText = (Typewriter) findViewById(R.id.StoryText);
-        storyText.setMovementMethod(new ScrollingMovementMethod());
-        storyText.setText("");
-        storyText.setCharacterDelay(150);
-        storyText.animateText(story1);
-//        final Firebase childRef = mRef.child(filename);
-
-        Choice1Btn.setOnClickListener(new  View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Choice1Btn.setEnabled(false);
-                Choice2Btn.setEnabled(false);
-                String filename = getIntent().getStringExtra("filename");
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString(filename, "1");
-                editor.commit();
-                Story writer = new Story();
-                String story2 = writer.WriteStory2();
-                storyText = (Typewriter) findViewById(R.id.StoryText);
-                storyText.append(story2);
-//                childRef.setValue("1");
-//                StoryText1 = (Typewriter) findViewById(R.id.StoryText1);
-//                StoryText1.setText("");
-//                StoryText1.setCharacterDelay(150);
-//                StoryText1.animateText(story2);
-//                StoryText1.append(story2);
-
-                SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                Map<String, ?> allEntries = prefs.getAll();
-                for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-                    Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
-                }
-            }
-        });
-
-        Choice2Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Choice1Btn.setEnabled(false);
-                Choice2Btn.setEnabled(false);
-                String filename = getIntent().getStringExtra("filename");
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString(filename, "2");
-                editor.commit();
-                Story writer = new Story();
-                String story3 = writer.WriteStory3();
-                 StoryText1 = (Typewriter) findViewById(R.id.StoryText1);
-                StoryText1.setText("");
-                StoryText1.setCharacterDelay(150);
-                StoryText1.animateText(story3);
-                SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                Map<String, ?> allEntries = prefs.getAll();
-                for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-                    Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
-                }
-            }
-        });
+////        scroll.postDelayed(new Runnable() {
+////            @Override
+////            public void run() {
+////                //replace this line to scroll up or down
+////                scroll.fullScroll(ScrollView.FOCUS_DOWN);
+////            }
+////        }, 100L);
+//            String story1 = writer.WriteStory(1);
+//            storyText = (Typewriter) findViewById(R.id.StoryText);
+//            storyText.setMovementMethod(new ScrollingMovementMethod());
+//            storyText.setText("");
+//            storyText.setCharacterDelay(150);
+//            storyText.animateText(story1);
+////        final Firebase childRef = mRef.child(filename);
+//
+//            Choice1Btn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Choice1Btn.setEnabled(false);
+//                    Choice2Btn.setEnabled(false);
+//                    String filename = getIntent().getStringExtra("filename");
+//                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+//                    editor.putString(filename, "1");
+//                    editor.commit();
+//                    Story writer = new Story();
+//                    String story2 = writer.WriteStory(2);
+//                    storyText = (Typewriter) findViewById(R.id.StoryText);
+//                    storyText.append(story2);
+////                childRef.setValue("1");
+////                StoryText1 = (Typewriter) findViewById(R.id.StoryText1);
+////                StoryText1.setText("");
+////                StoryText1.setCharacterDelay(150);
+////                StoryText1.animateText(story2);
+////                StoryText1.append(story2);
+//
+//                    SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+//                    Map<String, ?> allEntries = prefs.getAll();
+//                    for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+//                        Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
+//                    }
+//                }
+//            });
+//
+//            Choice2Btn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Choice1Btn.setEnabled(false);
+//                    Choice2Btn.setEnabled(false);
+//                    String filename = getIntent().getStringExtra("filename");
+//                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+//                    editor.putString(filename, "2");
+//                    editor.commit();
+//                    Story writer = new Story();
+//                    String story3 = writer.WriteStory(3);
+//                    StoryText1 = (Typewriter) findViewById(R.id.StoryText1);
+//                    StoryText1.setText("");
+//                    StoryText1.setCharacterDelay(150);
+//                    StoryText1.animateText(story3);
+//                    SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+//                    Map<String, ?> allEntries = prefs.getAll();
+//                    for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+//                        Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
+//                    }
+//                }
+//            });
 
 //        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
 
-
-    }
+        }
 }
