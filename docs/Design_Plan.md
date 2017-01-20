@@ -13,7 +13,7 @@ Story class: Story is written down in seperate classes that can be accessed by t
 
 ![alt_text](https://github.com/tartiflette1990/Programmeerproject/blob/master/Story_Activity.png)
 
-##Database and Interaction
-How do I want to save the story progress in firebase? I can label the choices with numbers and save these numbers seperated by commas under a username, that way it's clear from the length of the string of numbers how many choices the user has made and the numbers that the string is made up of will symbolize the choices made.
-Database entry consists of the username and the choices made during the story. User is presented with two choices so they can be saved as 1 and 2. Based on 1 or 2 the relevant parts of the stories are displayed in the story activity.
+##LoadFile Class
+
+
 ![alt text](https://github.com/tartiflette1990/Programmeerproject/blob/master/StoryAppDatabase.png)
