@@ -1,5 +1,5 @@
 #Design plan
-![alt text](https://github.com/tartiflette1990/Programmeerproject/blob/master/App_design.png)
+![alt text](https://github.com/tartiflette1990/FinalProject/blob/master/docs/App_design.png)
 
 
 ##Activities & Classes
