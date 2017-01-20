@@ -16,4 +16,6 @@ Story class: Story is written down in seperate classes that can be accessed by t
 ##LoadFile Class
 
 
-![alt text](https://github.com/tartiflette1990/Programmeerproject/blob/master/StoryAppDatabase.png)
+![alt text](https://github.com/tartiflette1990/Programmeerproject/blob/master/story_structure.jpg)
+
+The progression-string of numbers is saved as under the username key in sharedpreferences. This string functions for selecting the correct story previously played and selects the right choices from the Story class.
