@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Once upon a time</string>
     <string name="new_story_tv">New Story</string>
+    <string name="action_settings">action settings</string>
 </resources>

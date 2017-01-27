@@ -1,9 +1,10 @@
 package com.example.floris.onceuponatime;
 
-import android.support.annotation.RequiresPermission;
-import android.widget.TextView;
+import android.content.Context;
+import android.util.Log;
 
-import org.w3c.dom.Text;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Created by Floris on 1/11/2017.
@@ -11,20 +12,38 @@ import org.w3c.dom.Text;
 
 public class Story {
 
-    public String WriteStory(String i) {
-        if (i.equals("1")) {
-            return "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    public void StatusReader(Context context) {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(context.getAssets().open("story.txt")).useDelimiter("\n");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        if (i.equals("2")) {
-            return "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
-        }
-        if (i.equals("3")) {
-            return "ccccccccccccccccccccccccccccccccccccccccccccccccccccc";
-        }
-        if (i.equals("4")){
-            return "dddddddddddddddddddddddddddddddd";
-        }
-        return "";
+//        while(scanner.hasNext()) {
+        String output = scanner.next();
+        String[] story;
+        story = output.split("#");
+//        tvReader.append(story[1]);
+
     }
 
+    public String WriteStory(Context context, String i) {
+        Scanner scanner = null;
+        String[] story;
+        try {
+            scanner = new Scanner(context.getAssets().open("story.txt")).useDelimiter("\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        while (scanner.hasNext()) {
+            String output = scanner.next();
+            story = output.split("-");
+            Log.d("READERTAG output", output);
+            if (story[0].equals(i)) {
+
+                return story[1];
+            }
+        }
+        return "void";
+    }
 }

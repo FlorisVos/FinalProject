@@ -20,9 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Welcome_activity extends AppCompatActivity {
     private Typewriter typetext;
-    private Firebase mRef;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+//    private Firebase mRef;
+//    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
     public static final String MY_PREFS_NAME = "MyPrefsFile";
 
 
@@ -31,8 +31,8 @@ public class Welcome_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_activity);
         final Dialog dialog = new Dialog(this);
-        Firebase.setAndroidContext(this);
-        mAuth = FirebaseAuth.getInstance();
+//        Firebase.setAndroidContext(this);
+//        mAuth = FirebaseAuth.getInstance();
 
         Button startBtn = (Button) findViewById(R.id.startbtn);
         Button continueBtn = (Button) findViewById(R.id.continuebtn);
@@ -87,7 +87,6 @@ public class Welcome_activity extends AppCompatActivity {
                         else{
                             SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                             editor.putString(filename, "");
-                            editor.putInt("idName", 0);
                             editor.commit();
                             Intent startIntent = new Intent(Welcome_activity.this, story_activity.class);
                             startIntent.putExtra("filename", filename);

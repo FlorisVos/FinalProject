@@ -6,29 +6,37 @@ package com.example.floris.onceuponatime;
 
 public class Choice {
 
-    public int Choicecounter = 0;
+    public int i = 0;
+    public void ChoiceCounter(){
+        i++;
+    }
 
-    public String[] choice(int i){
-        if(i == 1){
+    public String[] choice(String i){
+        if(i.equals("1")){
             String[] choices1 = new String[2];
-            choices1[0] = "Choice 1.1";
-            choices1[1] = "Choice 1.2";
+            choices1[0] = "Go Left";
+            choices1[1] = "Go Right";
             return choices1;
         }
-        if(i == 2){
+        if(i.equals("12")){
             String[] choices2 = new String[2];
-            choices2[0] = "Choice 2.1";
-            choices2[1] = "Choice 2.2";
+            choices2[0] = "Be nice";
+            choices2[1] = "Talk business";
             return choices2;        }
-        if(i == 3){
+        if(i.equals("11")){
             String[] choices3 = new String[2];
-            choices3[0] = "Choice 3.1";
-            choices3[1] = "Choice 3.2";
+            choices3[0] = "Chocolate";
+            choices3[1] = "Vanilla";
             return choices3;        }
-        if(i == 4){
+        if(i.equals("111")){
             String[] choices4 = new String[2];
-            choices4[0] = "Choice 4.1";
-            choices4[1] = "Choice 4.2";
+            choices4[0] = "Call mom";
+            choices4[1] = "Call sis";
+            return choices4;        }
+        if(i.equals("112")){
+            String[] choices4 = new String[2];
+            choices4[0] = "Action!";
+            choices4[1] = "Romance..";
             return choices4;        }
         String choices20[] = new String[2];
         return choices20;
