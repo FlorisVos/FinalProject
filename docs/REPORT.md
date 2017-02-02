@@ -12,6 +12,9 @@ work is done and one class that supports this activity in the background.
 Theres some technical work in the textfile aswell, which has text for the storyTextView
 and text for the Buttons. These have to be split apart using the string-split function and returns the outcome to the story_activity.
 
+![alt text](https://github.com/tartiflette1990/FinalProject/blob/master/docs/designAPp.png)
+
+
 The textfile: Lines are ordered in a fixed manner: first are two 'choices' seperated
 by a "#" (hashtag) and followed by a "|" character. After the "|" follows text to append to
 the storyTextView. The 'choices' further serve as identifiers. A line can have certain
