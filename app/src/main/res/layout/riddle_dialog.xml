@@ -4,7 +4,7 @@
     android:layout_height="fill_parent">
 
     <TextView
-        android:text="Olga's fiery flying weapon"
+        android:text="single world, lower case"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
         android:id="@+id/editText2" />
 

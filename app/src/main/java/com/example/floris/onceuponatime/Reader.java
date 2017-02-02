@@ -3,12 +3,18 @@ package com.example.floris.onceuponatime;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,15 +23,17 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static java.security.AccessController.getContext;
+
 public class Reader extends AppCompatActivity {
 
     TextView tvReader;
     Button btnReader1;
     Button btnReader2;
+    private Toolbar toolbar;
+    private WebView webView;
     public String output;
     public static Scanner scanner;
-    line_selector lineSelector;
-    Dialog dialog;
     public static final String MY_PREFS_NAME = "MyPrefsFile";
 
 
@@ -33,17 +41,22 @@ public class Reader extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object (code from Stack Overflow)
+        setSupportActionBar(toolbar);
         tvReader = (TextView) findViewById(R.id.StoryReader);
-        tvReader.setMovementMethod(new ScrollingMovementMethod());
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/URANIA CZECH.ttf");
+        tvReader.setTypeface(font); // custom textfont
+        tvReader.setMovementMethod(new ScrollingMovementMethod()); // scrollable text
         tvReader.setText("");
         btnReader1 = (Button) findViewById(R.id.ReaderChoice1);
         btnReader2 = (Button) findViewById(R.id.ReaderChoice2);
+        btnReader1.setTypeface(font);
+        btnReader2.setTypeface(font);
 
         final Dialog dialog = new Dialog(this);
 
         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putString("answer","0");
-        editor.putInt("line",0);
+        editor.putString("answer","0"); // Value storage for exiting riddle-loops
         editor.commit();
 
 
@@ -54,89 +67,68 @@ public class Reader extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        line_selector lineSelector = new line_selector();
+
+        final line_selector lineSelector = new line_selector(); // Class that seperates story and choice texts
         output = scanner.nextLine();
-        String firstStory = lineSelector.getStory(output);
+        String firstStory = lineSelector.getStory(output); // Text for the story
+        String[] choices = lineSelector.getChoices(output); //String array of texts for the buttons
+
         tvReader.setText(firstStory);
-        String[] choices = lineSelector.getChoices(output);
         btnReader1.setText(choices[0]);
         btnReader2.setText(choices[1]);
+
         btnReader1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                final line_selector lineSelector = new line_selector();
-                Log.d("BTN1.OUTPUTSTART", output);
-
-                String[] choices = lineSelector.getChoices(output);
-
-
+                String[] choices = lineSelector.getChoices(output); // gets string array from ls.class
                 SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                int lineInt = prefs.getInt("line",1);
-                Log.d("lineInt start", String.valueOf(lineInt));
-
                 String answer = prefs.getString("answer", "");
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                if (choices[0].equals("c ") && answer.equals("1")) {
-                    Log.d("AnswerIF-success", output);
+                if(choices[0].equals("ending ")){
+                    Intent intent = new Intent(getApplicationContext(), Welcome_activity.class);
+                    startActivity(intent); // end story
+                }
+                if (choices[0].equals("c ") && answer.equals("1")) { // Conditions for exiting riddle-loop
                     int i = 8;
-                    while (i > 0) {
+                    while (i > 0) { // 9 lines have to be skipped to continue the story
                         scanner.nextLine();
                         i--;
                     }
-                    output = scanner.nextLine();
+                    output = scanner.nextLine(); // 9th line
                     tvReader.append(lineSelector.getStory(output));
                     choices = lineSelector.getChoices(output);
                     btnReader1.setText(choices[0]);
                     btnReader2.setText(choices[1]);
                     output = scanner.nextLine();
-                    lineInt = prefs.getInt("line",1);
-                    lineInt = lineInt + 9;
-                    editor.putInt("line",lineInt);
-                    editor.putString("answer","0");
+                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                    editor.putString("answer", "0"); // change value for exiting loop
                     editor.commit();
 
                 } else {
                     if (choices[0].equals("x ") || choices[0].equals("c ") || choices[0].equals("abc ")) {
-                        Log.d("BTN1.X/C/ABC", choices[0]);
+                        // these are the cases where scanner stays on the same line
                         tvReader.append(lineSelector.getStory(output));
                     } else {
-                        Log.d("Trigger:Normal CASE1", output);
                         output = scanner.nextLine();
-                        Log.d("Trigger:Normal CASE2", output);
-                        lineInt = prefs.getInt("line",1);
-                        lineInt++;
-                        editor.putInt("line",lineInt);
-                        editor.commit();
-                        String[] choices1 = lineSelector.getChoices(output);
-                        if (choices1[0].equals("d ")) {
-                            Log.d("DialogIF-success", output);
-                            prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                            answer = prefs.getString("answer", "");
-                            Log.d("AnsweRLOG", answer);
+                        choices = lineSelector.getChoices(output);
+                        if (choices[0].equals("d ")) { // opens dialog for answering the riddle
                             dialog.setContentView(R.layout.riddle_dialog);
-                            Log.d("DIALOGTAG", "dialog");
                             Button submitbutton = (Button) dialog.findViewById(R.id.button2);
                             submitbutton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Room room = new Room();
                                     EditText crosswordET = (EditText) dialog.findViewById(R.id.editText2);
                                     String answer = crosswordET.getText().toString();
-                                    SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                                    int lineInt = prefs.getInt("line",0);
                                     String[] choices2 = lineSelector.getChoices(output);
-                                    String correctAnswer = lineSelector.getAnswer(choices2[1]);
-                                    Log.d("correctAnwer",correctAnswer);
+                                    String correctAnswer = lineSelector.getAnswer(choices2[1]); // gets the answer to current riddle based on identifying value in .txt file
                                     if (answer.equals(correctAnswer)) {
                                         Context context = getApplicationContext();
-                                        CharSequence text = "Correct answer, hurry outside!";
+                                        CharSequence text = "Correct answer, you can continue!";
                                         int duration = Toast.LENGTH_SHORT;
 
                                         Toast toast = Toast.makeText(context, text, duration);
-                                        toast.show();
+                                        toast.show(); // show user answer is correct
                                         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                                        editor.putString("answer", "1");
+                                        editor.putString("answer", "1"); // change value for exiting loop
                                         editor.commit();
 
                                     } else {
@@ -145,44 +137,29 @@ public class Reader extends AppCompatActivity {
                                         int duration = Toast.LENGTH_SHORT;
 
                                         Toast toast = Toast.makeText(context, text, duration);
-                                        toast.show();
+                                        toast.show(); // show user answer is wrong
                                     }
                                 }
                             });
                             dialog.show();
                         }
-                        if (choices1[0].equals("x ") || choices1[0].equals("c ") || choices1[0].equals("d ") || choices1[0].equals("abc ")) {
-                            Log.d("NORMAL.XTRIGGER", choices[0]);
+                        // checks for cases where scanner should stay on same line
+                        if (choices[0].equals("x ") || choices[0].equals("c ") || choices[0].equals("d ") || choices[0].equals("abc ")) {
                             tvReader.append(lineSelector.getStory(output));
                         } else {
-                            if (choices1[0].equals("startroom ")) {
+                            if (choices[0].equals("startroom ")) {
                                 output = scanner.nextLine();
-                                lineInt = prefs.getInt("line",1);
-                                lineInt++;
-                                editor.putInt("line",lineInt);
-                                editor.commit();
-                                Log.d("Normal Startroom2", output);
+                            }
+                            if(choices[0].equals("ending ")){
+                                Intent intent = new Intent(getApplicationContext(), Welcome_activity.class);
+                                startActivity(intent); // end story
                             }
                             tvReader.append(lineSelector.getStory(output));
-                            choices1 = lineSelector.getChoices(output);
-                            btnReader1.setText(choices1[0]);
-                            btnReader2.setText(choices1[1]);
-//                            output = scanner.nextLine();
-                            lineInt = prefs.getInt("line",1);
-                            lineInt++;
-                            editor.putInt("line",lineInt);
-                            editor.commit();
-                            Log.d("Output FINAL", output);
+                            choices = lineSelector.getChoices(output);
+                            btnReader1.setText(choices[0]);
+                            btnReader2.setText(choices[1]);
                         }
                     }
-//                    tvReader.append(lineSelector.getStory(output));
-//                    choices = lineSelector.getChoices(output);
-//                    btnReader1.setText(choices[0]);
-//                    btnReader2.setText(choices[1]);
-//                    output = scanner.nextLine();
-//                    Log.d("Output FINAL",output);
-
-
                 }
             }
         });
@@ -190,16 +167,18 @@ public class Reader extends AppCompatActivity {
         btnReader2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                line_selector lineSelector = new line_selector();
-                SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                String answer = prefs.getString("answer", "");
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                String[] choicestest = lineSelector.getChoices(output);
-                Log.d("BTN2.OUTPUTSTART", output);
 
-                if (choicestest[0].equals("endroom ") || choicestest[0].equals("abc ")) {
-                    String LoopNumber = choicestest[1];
-                    Log.d("LoopNumber",LoopNumber);
+                String[] choices = lineSelector.getChoices(output);
+
+                if(choices[0].equals("ending ")){
+                    Intent intent = new Intent(getApplicationContext(), Welcome_activity.class);
+                    startActivity(intent); // end story
+                }
+                Log.d("k",output);
+                if (choices[0].equals("endroom ") || choices[0].equals("abc ")) { // set scanner back to start of loop
+
+                    String LoopNumber = choices[1]; //identifies loop
+                    Log.d("x",output);
 
                     scanner = null;
                     try {
@@ -208,93 +187,97 @@ public class Reader extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     output = scanner.nextLine();
+                    Log.d("z",output);
+
                     while (!lineSelector.getChoices(output)[1].equals(LoopNumber)) {
                         output = scanner.nextLine();
-                    }
-                    Log.d("BTN2.ENDROOM CASE2", output);
+                        Log.d("ss",output);
 
+                    }
                 }
 
-                String[] choices1 = lineSelector.getChoices(output);
-                Log.d("trigger correct?",output);
-                if (choices1[0].equals("x ") || choices1[0].equals("abc ") || choices1[0].equals("c ") || choices1[0].equals("d ")) {
-                    Log.d("Btn2.XTRIGGER2", choices1[0]);
+                Log.d("k2",output);
+
+
+                choices = lineSelector.getChoices(output);
+
+                if (choices[0].equals("x ") || choices[0].equals("abc ") || choices[0].equals("c ") || choices[0].equals("d ")) {
                     output = scanner.nextLine();
-                    int lineInt = prefs.getInt("line",1);
-                    lineInt++;
-                    editor.putInt("line",lineInt);
-                    editor.commit();
                     tvReader.append(lineSelector.getStory(output));
-                    choices1 = lineSelector.getChoices(output);
-                    btnReader1.setText(choices1[0]);
-                    btnReader2.setText(choices1[1]);
-                    Log.d("Btn2.XTRIGGER2", output);
+                    choices = lineSelector.getChoices(output);
+                    btnReader1.setText(choices[0]);
+                    btnReader2.setText(choices[1]);
                 } else {
-                    Log.d("Trigger:Normal CASE1",output);
+
                     output = scanner.nextLine();
-                    int lineInt = prefs.getInt("line",1);
-                    lineInt++;
-                    editor.putInt("line",lineInt);
-                    editor.commit();
-                    Log.d("Trigger:Normal CASE2",output);
-                    choices1 = lineSelector.getChoices(output);
-                        if(choices1[0].equals("startroom ") || choices1[0].equals("x ") || choices1[0].equals("abc ") || choices1[0].equals("c ") || choices1[0].equals("d ") ){
-                            Log.d("Normal Startroom",output);
+                    choices = lineSelector.getChoices(output);
+
+                    // checks for cases where scanner should stay on same line
+                    if(choices[0].equals("startroom ") || choices[0].equals("x ") || choices[0].equals("abc ") || choices[0].equals("c ") || choices[0].equals("d ") ){
                             output = scanner.nextLine();
-                            lineInt = prefs.getInt("line",1);
-                            lineInt++;
-                            editor.putInt("line",lineInt);
-                            editor.commit();
-                            Log.d("Normal Startroom2",output);
-                        }
-                    Log.d("ENDROOM TRIGGER?",output);
-                    if (choices1[0].equals("endroom ") || choices1[0].equals("abc ")) {
-                        lineInt = prefs.getInt("line",1);
-                        lineInt = lineInt - 4;
-                        editor.putInt("line",lineInt);
-                        editor.commit();
-                        Log.d("BTN2.ENDROOM CASE1", output);
-                        String LoopNumber = choices1[1];
-                        Log.d("loopnumber",LoopNumber);
-                        scanner = null;
+                            choices = lineSelector.getChoices(output);
+
+                    }
+                    if(choices[0].equals("ending ")){
+                        Intent intent = new Intent(getApplicationContext(), Welcome_activity.class);
+                        startActivity(intent); // end story
+                    }
+
+                    if (choices[0].equals("endroom ") || choices[0].equals("abc ")) {
+
+                        String LoopNumber = choices[1]; // identifier for loop
+
+                        scanner = null;     // re open scanner to set it back
+
                         try {
                             scanner = new Scanner(getAssets().open("story.txt")).useDelimiter("\n");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+
                         output = scanner.nextLine();
-                        lineInt = prefs.getInt("line",1);
-                        lineInt++;
-                        editor.putInt("line",lineInt);
-                        editor.commit();
-                        Log.d("BTN2.ENDROOM CASE", output);
+
+                        // set scanner back to start of loop
                         while (!lineSelector.getChoices(output)[1].equals(LoopNumber)) {
                             output = scanner.nextLine();
                         }
                         output = scanner.nextLine();
-                        lineInt = prefs.getInt("line",1);
-                        lineInt++;
-                        editor.putInt("line",lineInt);
-                        editor.commit();
-                        Log.d("BTN2.ENDROOM CASE2", output);
                     }
                         tvReader.append(lineSelector.getStory(output));
-                        choices1 = lineSelector.getChoices(output);
-                        btnReader1.setText(choices1[0]);
-                        btnReader2.setText(choices1[1]);
-//                        output = scanner.nextLine();
-                    lineInt = prefs.getInt("line",1);
-                    lineInt++;
-                    editor.putInt("line",lineInt);
-                    editor.commit();
-                        Log.d("Output FINAL",output);}
+                        choices = lineSelector.getChoices(output);
+                        btnReader1.setText(choices[0]);
+                        btnReader2.setText(choices[1]);
+
+                }
                 }
         });
 
     }
-    public void closeActivity(){
 
-        finish();
+    // Code for toolbar
+    // I've got this code from Stack-Overflow
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
-}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_search) {
+            webView = (WebView) findViewById(R.id.webView1);
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.loadUrl("http://www.wikipedia.com");
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    }

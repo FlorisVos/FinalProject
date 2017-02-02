@@ -9,21 +9,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.floris.onceuponatime.Reader">
+    tools:context="com.example.floris.onceuponatime.Reader"
+    android:background="@color/colorPrimary">
 
+    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/webView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
-
-
-    <!--<ScrollView-->
-    <!--android:layout_width="80dp"-->
-    <!--android:id="@+id/scrollView"-->
-    <!--android:layout_height="300dp"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_alignParentLeft="true"-->
-    <!--android:layout_alignParentStart="true"-->
-    <!--&gt;-->
-
-    <!--</ScrollView>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,51 +25,54 @@
         android:orientation="vertical"
         android:weightSum="1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"
+            />
 
 
-        <com.example.floris.onceuponatime.Typewriter
+        <TextView
             android:id="@+id/StoryReader"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Once upon a time there was a guy on a spaceship and he had to survive and..."
+            android:text="You enter the perimeters but now your way is blocked by an inquisitive looking fella."
             android:textSize="24sp"
             android:maxLines="10"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:gravity="bottom"
+            android:textColor="@android:color/black" />
 
-        <com.example.floris.onceuponatime.Typewriter
-            android:text=""
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/StoryText1"
-            android:textSize="24sp"
-            android:scrollbars="vertical"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:background="#00000000"
             >
 
             <Button
                 android:id="@+id/ReaderChoice1"
+                android:text="Oh boy oh boy!"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="choice1"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/black" />
 
             <Button
-                android:text="Readerchoice2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="There we go again"
                 android:id="@+id/ReaderChoice2"
                 android:layout_below="@+id/ReaderChoice1"
                 android:layout_alignLeft="@+id/ReaderChoice1"
-                android:layout_alignStart="@+id/ReaderChoice1" />
+                android:layout_alignStart="@+id/ReaderChoice1"
+                android:textColor="@android:color/black" />
 
 
         </RelativeLayout>

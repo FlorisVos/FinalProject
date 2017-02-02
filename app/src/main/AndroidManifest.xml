@@ -17,11 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".story_activity" />
-        <activity android:name=".AnimatedTextActivity" />
-        <activity android:name=".TypeWriterView_activity" />
-        <activity android:name=".Fileselect" />
-        <activity android:name=".WikiActivity" />
         <activity android:name=".Welcome_activity" />
         <activity android:name=".fragment_webview"></activity>
     </application>

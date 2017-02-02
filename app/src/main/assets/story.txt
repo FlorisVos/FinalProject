@@ -32,8 +32,20 @@ Talk to the kid # Walk towards the ferry |You continue on and see a kid stacking
 abc # 2 | The kid tells you he likes stacking pebbles and one day hopes to build a castle of rocks.
 endroom # 2 |endroom
 Such scenery # Much wow |You take the ferry and cross over the 't IJ
-Alright # Carry on then | Okidoki
-Very nice # very nice indeed | Yes truly nice
-Okay # another line | yes this can go on
-Quite some time # yes | quite some time indeed
-
+It's a race! # Gotta go fast! | The ferry lands and the hatches are slowly opening. The front bikers are already preparing for the battle about to commence.
+Early indeed # More science for me! | The science park looks a bit abandoned today, perhaps its still early.
+Oh boy oh boy! # There we go again | You enter the perimeters but now your way is blocked by an inquisitive looking fella.
+startroom # 3 |startroom3
+Pass the fella # Go into VIA-room | Your at the main entrance of the science park.
+c # x | I don't think you may pass! Better look around first.
+Look over shoulder # Go back outside | There's a guy heavily focused on his computerscreen. Colored text in front of a black screen flashes by rapidly.
+x # x | It's a weird looking programming language. You get an angry look from someone else in the room who says "He's looking at your esolang George!"
+Answer him # Go back outside |You are in front of the inquisitive fella again, behind you is the entrance.
+d # 3 | You try to answer this inquisitive dudes riddle.
+look at clouds # Go back inside |Pfff your outside again, what a rough day this is.. today felt so *deterministic* for some reason..
+abc # 3 | Is everything deterministic you wonder or could things also be *nondeterministic*?
+endroom # 3 |endroom3
+finish # finish | You pass the inquisitive fella and finally enter the science park. Ah time to do some science... Congratulations on making it here and thanks for playin! (this is the end :p)
+finish # finish | You pass the inquisitive fella and finally enter the science park. Ah time to do some science... Congratulations on making it here and thanks for playin! (this is the end :p)
+ending # finish | You pass the inquisitive fella and finally enter the science park. Ah time to do some science... Congratulations on making it here and thanks for playin! (this is the end :p)
+ending # finish | You pass the inquisitive fella and finally enter the science park. Ah time to do some science... Congratulations on making it here and thanks for playin! (this is the end :p)

@@ -9,20 +9,22 @@ import java.util.Scanner;
 /**
  * Created by Floris on 1/27/2017.
  */
-//checks for line-type
+
+// Returns appropriate output to Reader activity
+
 public class line_selector {
 
+    // seperates the story from the choices
+    // returns storytext as string
     public String getStory(String string){
         String[] choicesAndStory = string.split("\\|");
             return choicesAndStory[1];
     }
-    public String story(String string){
-        String[] story = string.split("\\|");
-        return story[1];
-    }
+
+    // seperates the choices from the story text
+    // choices go in a string array
     public String[] getChoices(String string){
         String[] choicesAndStory = string.split("\\|");
-        Log.d("ChoicesAndStory",choicesAndStory[0]);
         String choices = choicesAndStory[0];
         String[] choicesArray = choices.split("#");
         Log.d("LSChoices",choicesArray[0]);
@@ -33,11 +35,17 @@ public class line_selector {
             Log.d("Error","Index error");
         return choicesArray;}
     }
+
+    // Storage of answers
+    // gives back answer based on loopnumber
     public String getAnswer(String i){
         if(i.equals(" 1 ")){
             return "pigeon";
         }
-        else{return "stone";}
+        if(i.equals(" 2 ")){return "stone";}
+        else{
+            return "befunque";
+        }
     }
 
 }
