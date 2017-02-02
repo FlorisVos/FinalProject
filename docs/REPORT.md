@@ -12,7 +12,7 @@ work is done and one class that supports this activity in the background.
 Theres some technical work in the textfile aswell, which has text for the storyTextView
 and text for the Buttons. These have to be split apart using the string-split function and returns the outcome to the story_activity.
 
-![alt text](https://github.com/tartiflette1990/FinalProject/blob/master/docs/designAPp.png)
+![alt text](https://github.com/tartiflette1990/FinalProject/blob/master/docs/designAPp.jpg)
 
 
 The textfile: Lines are ordered in a fixed manner: first are two 'choices' seperated
