@@ -56,17 +56,35 @@ that it was easy but that's what I thought back then..
 The story.txt file has the text for the story, the text for the choicebuttons and the codes for the text.
 These are splitted using the split function and can thus be processed and put in the right place. 
 
-##Further## challenges had to do with how I worked, which wasn't really organized, this is reflected in the code I'm sure.
+##Further challenges
+They had to do with how I worked, which wasn't really organized, this is reflected in the code I'm sure.
 I've had plenty of bugs due to wrong variable names or stupid errors that could have been prevented if only I was more alert or paid closer
 attention, bugs that I was stuck on for hours sometimes. I've tried to make my code more organized but this didn't really work out.
 
 ###processjournal
 **30-01**: Worked on implementing the whole functionality while keeping my main-activity clean.. I failed to pass the scanner object to a different class so I now open the scanner function in the mainclass.. This means that a lot of work has to be done in the main class unfortunately and the code looks really ugly as a result. Still don't have the functionality working, there are more exceptions than I had thought in the beginning and they cause for a lot of if-statements. 
 
-##Some smaller challenges
-They include failing hardware: from some point on my phone had to be completely rebooted after the app crashed while testing.
+##Some smaller challenge
+Failing hardware: from some point on my phone had to be completely rebooted each time the app crashed while testing.
 The emulator was not an option since it would be even slower then rebooting my phone.
 
 ###processjournal
 **24-01**: Phone crashed constantly today, took ages to fix a bug... 
+
+#Decisions
+I'll list the relevant decisions made chronologically and will go into them briefly
+
+##Changing the idea
+At first I had the idea that each buttonclick would create a new branch of the story. I thought I could make branches merge later so that I wouldn't have to write out all the story branches. This turned out to be difficult with how I had my code organized and then
+I realized that that other aspects were more important. These were at the time the replayability of the story, so with multiple endings
+it would be nice to replay the story. The interactive aspect of the app, I wanted the user to go on wikipedia to find the answer to 
+certain riddles. I had to make a decision because at this point I couldn't implement both of them. I choose to go with the riddles idea
+since that preserved a lot of the interactive qualities I wanted my app to have. (like a game) This led me to discared my loadfile system in the final app because it relied on my old code. A difficult decision but also a feature thats not part of the core-idea.
+
+##Go for the cleanest code-architecture
+This was difficult for me, I had time reserved to make my code look more organized. This has to do with opening the scanner object but handling it in a different class. I researched this for more then a day and tried different approaches but couldn't get it to work. With time pressure I had to go for the sloppy solution of handling the scanner in the main activity. Its too bad I was researching this on friday and over the weekend so I couldn't get the TA's input on this. Monday morning I made the decision to continue on since it took me too long otherwise. But when I talked to Renske later she said it wouldn't have been too difficult to handle the scanner in a different class.
+
+
+
+
 
