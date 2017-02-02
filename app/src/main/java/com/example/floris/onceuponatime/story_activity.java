@@ -24,13 +24,17 @@ import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class story_activity extends AppCompatActivity {
 
+    public static Scanner scanner;
     private Typewriter storyText;
     private Typewriter StoryText1;
     private Button Choice1Btn;
@@ -58,6 +62,12 @@ public class story_activity extends AppCompatActivity {
         final LoadFile loadFile = new LoadFile();
         final Dialog dialog = new Dialog(this);
         final String pass = "";
+        final Scanner scanner;
+        try {
+            scanner = new Scanner(getAssets().open("story.txt")).useDelimiter("\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -80,7 +90,7 @@ public class story_activity extends AppCompatActivity {
             storyText.setText("");
             storyText.setCharacterDelay(1);
             storyText.animateText(loaded_story);
-            String ChoicesAndStory = writer.WriteStory(getApplicationContext(), progress);
+            String ChoicesAndStory = writer.WriteStory(getApplicationContext());
             String[] ChoicesNoStory = ChoicesAndStory.split("\\|");
             String[] choices = ChoicesNoStory[0].split("#");
             Choice1Btn.setText(choices[0]);
@@ -93,7 +103,8 @@ public class story_activity extends AppCompatActivity {
             editor.putString(filename, progress);
             editor.commit();
             Log.d("ProgRESs TAG:", progress);
-            String story1 = writer.WriteStory(getApplicationContext(),"1");
+//            String story1 = scanner.next();
+            String story1 = writer.WriteStory(getApplicationContext());
             String[] splitstory = story1.split("\\|");
 
             storyText = (Typewriter) findViewById(R.id.StoryText);
@@ -142,7 +153,6 @@ public class story_activity extends AppCompatActivity {
 
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
-                                    room.setGlobalVarValue("true");
                                     SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                                     editor.putString("crossword", "true");
                                     editor.commit();
@@ -189,7 +199,6 @@ public class story_activity extends AppCompatActivity {
 
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
-                                    room.setGlobalVarValue("true");
                                 }
                                 else{
                                     Context context = getApplicationContext();
@@ -213,7 +222,7 @@ public class story_activity extends AppCompatActivity {
                 editor.putString(filename, progress);
                 editor.commit();
                 Log.d("ProgRESs TAG:", progress);
-                String story1 = writer.WriteStory(getApplicationContext(),progress);
+                String story1 = writer.WriteStory(getApplicationContext());
                 String[] splitstory = story1.split("\\|");
                 String[] choices = splitstory[0].split("#");
                 storyText.append(splitstory[1]);
@@ -254,7 +263,7 @@ public class story_activity extends AppCompatActivity {
                 editor.putString(filename, progress);
                 editor.commit();
                 Log.d("ProgRESs TAG:", progress);
-                String story1 = writer.WriteStory(getApplicationContext(),progress);
+                String story1 = writer.WriteStory(getApplicationContext());
                 String[] splitstory = story1.split("\\|");
                 String[] choices = splitstory[0].split("#");
                 storyText.append(splitstory[1]);

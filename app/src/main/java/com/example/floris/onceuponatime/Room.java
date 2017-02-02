@@ -12,16 +12,6 @@ import java.util.Scanner;
 
 public class Room extends story_activity {
 
-        private String mGlobalVarValue;
-
-        public String getGlobalVarValue() {
-            return mGlobalVarValue;
-        }
-
-        public void setGlobalVarValue(String str) {
-            mGlobalVarValue = str;
-        }
-
     public String getStory(Context context,String string) {
         Scanner scanner = null;
         String[] story;
@@ -39,13 +29,5 @@ public class Room extends story_activity {
             }
         }
         return "void";
-    }
-
-    public String crossword(String string){
-        String signal = "false";
-        if(string.equals("Pigeon") || string.equals("pigeon")){
-            signal = "true";
-        }
-        return signal;
     }
 }

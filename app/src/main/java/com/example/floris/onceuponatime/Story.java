@@ -1,9 +1,15 @@
 package com.example.floris.onceuponatime;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -12,23 +18,15 @@ import java.util.Scanner;
 
 public class Story {
 
-    public void StatusReader(Context context) {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(context.getAssets().open("story.txt")).useDelimiter("\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        while(scanner.hasNext()) {
-        String output = scanner.next();
-        String[] story;
-        story = output.split("#");
-//        tvReader.append(story[1]);
 
-    }
 
-    public String WriteStory(Context context, String i) {
-        Scanner scanner = null;
+public void OpenScanner(Context context) throws FileNotFoundException {
+    FileInputStream fis = context.openFileInput("story.txt");
+    final InputStreamReader isr = new InputStreamReader(fis);
+}
+
+    public String WriteStory(Context context) {
+                Scanner scanner = null;
         String[] story;
         try {
             scanner = new Scanner(context.getAssets().open("story.txt")).useDelimiter("\n");
@@ -37,13 +35,35 @@ public class Story {
         }
         while (scanner.hasNext()) {
             String output = scanner.next();
-            story = output.split("-");
-            Log.d("READERTAG output", output);
-            if (story[0].equals(i)) {
-
-                return story[1];
-            }
+            return output;
+//            story = output.split("-");
+//            Log.d("READERTAG output", output);
+//            if (story[0].equals(i)) {
+//
+//                return story[1];
+//            }
         }
         return "void";
     }
-}
+    }
+
+//        Scanner scanner;
+//        String[] story;
+//        try {
+//            scanner = new Scanner(context.getAssets().open("story.txt")).useDelimiter("\n");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        while (scanner.hasNext()) {
+//            String output = scanner.next();
+//            return output;
+////            story = output.split("-");
+////            Log.d("READERTAG output", output);
+////            if (story[0].equals(i)) {
+////
+////                return story[1];
+////            }
+//        }
+//        return "void";
+//    }
+

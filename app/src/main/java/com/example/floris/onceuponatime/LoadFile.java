@@ -23,7 +23,7 @@ public class LoadFile {
         for (int i = 0; i < progress.length(); i++){
             char c = progress.charAt(i);
             loadcode = loadcode + Character.toString(c);
-            loaded_story = loaded_story + splitter.story(writer.WriteStory(context,loadcode));
+//            loaded_story = loaded_story + splitter.story(writer.WriteStory(context,loadcode));
             //Process char
         }
         Log.d("LoadClassTag",loaded_story);

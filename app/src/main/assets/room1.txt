@@ -1,0 +1,8 @@
+Go outside # Go to the bookcase | You're in the kitchen, it would be kinda nice to do the dishes, maybe.. But you could also make the crossword in the newspaper..
+You feel like doing a crossword before going outside.
+Open history book # Go sit on the sofa | You're at the library of this luxurious apartment *ah-um*.. Anyhow you face a bookshelf.
+Oh a russian history book! There's something here about Olga of Kiev, she sure seemed angry..
+Do crossword # Walk to desk | Ah the living room, the heart of any single room sea-shipping container.. There's a newspaper on the table with a crossword puzzle, maybe nice to try.
+Do crossword
+Look at poster # Go into kitchen | The organized on top of the desk draws the eye but on the wall behind it hangs a poster.
+There are some big red letters that read Cher Ami, and you see soldiers fighting in trenches.

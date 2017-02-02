@@ -1,8 +1,39 @@
-1- Shit.. # Rise and Shine! | *alarm sounds* Ugh it's not even time to wake up yet..
-11- >> # >> | You remember a strange dream, an awfully lucid strange dream.. but it's time to get out of bed now..
-111- Cup of ambition # Time for yoga! | You stumble out of bed and fumble to the kitchen.
-1111- Kill some time # Kill some time | You feel refreshed! And find yourself in the kitchen. You have to be at the Science Park at 10.00 but you still have some time left.
-11111- Go outside # Go to the bookcase |   You're in the kitchen, it would be kinda nice to do the dishes, maybe.. But you could also make the crossword in the newspaper..
-111111- x # x |Can't go outside yet.
-1111111- Open history book # Go sit on the sofa | You're at the library of this luxurious apartment *ah um*.. Anyhow you face a bookshelf.
-11111111- x # x |Oh a russian history book! There's something here about Olga of Kiev, she sure seemed angry..
+Too early.. # Rise and Shine! | *beep beep* soundwaves intrude on your hearing-apparatus signifying the start of a new day for you.
+just a dream # wtf? | Images of strange apparitions are still present in your minds eye. Perhaps memories of an early age or the processing of recently experienced emotions.
+Stare at coffeepot # First a shower? | Following your natural inclinations you arrange for some black brew to start brewing
+Kill some time # Walk around |Upon finishing all the morning rituals you're left with some time to spare.
+startroom # 1 |startroom
+Go outside # Go to the bookcase | Your current location is the kitchen! You see a door to go outside and to your left is a bookcase.
+c # x | Its still too early, there is time for other things, for example a crossword. *not a hint or anything..*
+Open history book # Go sit on the sofa |You're in front of the bookcase. A history book catches your eye. To your left is a sofa and a coffee table.
+x # x |You open the history book somewhere in the middle. The configuration of letters on these pages provide information about one 'Olga of Kiev', the type of person likely to hold a grudge it seems.
+Do crossword # Walk to desk |                                You seat yourself on the sofa in front of a coffee table. On top of the coffee table you see a newspaper opened on the crossword section. Behind the coffee table you see a desk and a poster.
+d # 1 |            You look at the crossword in the newspaper.
+Look at poster # Go into kitchen |                                You stand in front of a desk. The desk in turn stands against a wall and on that wall hangs a poster.
+abc # 1 |                                 You look at the poster and see.... Big red letters that spell out two words: "Cher" and "Ami". The poster further displays a war-scenery with soldiers in trenches.
+endroom # 1 |endroom
+That's nice#Stupid weather|                                     You step outside where you are greeted by winds of an above average amount of kilometers and a below average amount of temperatures.
+Sup spiderbro's!#Fine day isn't it?|                                          Winds are the only thing greeting you this morning. No trace of other living things except for the two voluminous spiders in your doorpost. Best to greet them or you'd seem rude.
+lala # okay | this line is skipped
+Fine day for science # Exchanges?! |                                     After the formal exchanges with your arachnid neighbours you head off towards the EAST where science is done in a park of some sorts..
+Okay, so? # A park thats not green?!|                               Your residency is located such that a body of water seperates you from most points of interest in Amsterdam, excluding the eye-film-museum, but including that not so green park where beautiful science takes place.
+Oh how dramatic...#Oh dear|                                             Boarding the ferry is crucial for the continuance of your journey however it is the case that Fred the Ferryman is probably on duty.. Your thoughts are occupied by this scenario and neurons fire such and so that a wave of anxiety and uneasiness hits you.
+OH NO!#I see where this is going..|                                    Fred always picks out one person waiting for the ferry and tells him/her/it a riddle. The object of Fred's sadistic interest has to answer this riddle correctly in order to cross the ferry.
+Okay he's going to pick me # Who is he going to pick? |                                            Meanwhile you're currently arriving at the ferry-departure-platform-harbor-place. On the platform in the middle of the crowd of people waiting for the ferry stands a big red nosed bald headed individual with a prying eye. Fred's looking for a victim.
+Walk around the platform#Look around|                                  He points the gaze of his one good eye towards the unfortunate cyclist that just arrived. You happen to coincide with this cyclist and find Fred's one-eyed gaze focused on you!
+startroom # 2 |startroom2
+Go on the ferry # Walk to the back| Your in front of the ferry, you don't see Fred around but he might be looking..
+c # x | Fred probably wouldn't let you pass yet so better not try..
+Listen in # Walk further|You are at the back of the platform and see two mailmen conversing.
+x # x | You listen in on the two mailmen, you can't quite make out what they say but one suddenly exclaims: "Ferdinand Cheval!"
+Talk to Fred # Continue on |You walk further through the crowd of people. The crowd has dissipated around the considerably sized figure of Fred.. He sees you and says: Tripping over this object can make a man remember his dream.
+d # 2 | You try to answer Fred's riddle.
+Talk to the kid # Walk towards the ferry |You continue on and see a kid stacking stones.
+abc # 2 | The kid tells you he likes stacking pebbles and one day hopes to build a castle of rocks.
+endroom # 2 |endroom
+Such scenery # Much wow |You take the ferry and cross over the 't IJ
+Alright # Carry on then | Okidoki
+Very nice # very nice indeed | Yes truly nice
+Okay # another line | yes this can go on
+Quite some time # yes | quite some time indeed
+

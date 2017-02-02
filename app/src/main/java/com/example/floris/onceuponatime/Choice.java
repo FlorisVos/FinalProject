@@ -1,45 +1,63 @@
 package com.example.floris.onceuponatime;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 /**
  * Created by Floris on 1/19/2017.
  */
 
 public class Choice {
 
-    public int i = 0;
-    public void ChoiceCounter(){
-        i++;
-    }
+//    if(progress.length() > 4 && progress.length() < 10){
+//        Room room = new Room();
+//        String roomstory = room.getStory(getApplicationContext(),progress + "2");
+//        String progressplus2 = progress + "2";
+//        if(progressplus2.equals("11111112"))}
 
-    public String[] choice(String i){
-        if(i.equals("1")){
-            String[] choices1 = new String[2];
-            choices1[0] = "Go Left";
-            choices1[1] = "Go Right";
-            return choices1;
-        }
-        if(i.equals("12")){
-            String[] choices2 = new String[2];
-            choices2[0] = "Be nice";
-            choices2[1] = "Talk business";
-            return choices2;        }
-        if(i.equals("11")){
-            String[] choices3 = new String[2];
-            choices3[0] = "Chocolate";
-            choices3[1] = "Vanilla";
-            return choices3;        }
-        if(i.equals("111")){
-            String[] choices4 = new String[2];
-            choices4[0] = "Call mom";
-            choices4[1] = "Call sis";
-            return choices4;        }
-        if(i.equals("112")){
-            String[] choices4 = new String[2];
-            choices4[0] = "Action!";
-            choices4[1] = "Romance..";
-            return choices4;        }
-        String choices20[] = new String[2];
-        return choices20;
-    }
+//    if(progressplus2.equals("111112") && crossword.equals("true")){
+//        Log.d("OUTSIDEOKAY","HERE");
+//        storyText.append("You go outside, *brrr* it's cold and has been raining. You go to your bike and unlock it.");
+//        Choice1Btn.setText("Race to Science Park");
+//        Choice2Btn.setText("Relax, take a scenic route");
+//        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+//        editor.putString("crossword", "false");
+//        editor.commit();
+//    }
+//    else if(roomstory.equals("Do crossword") || roomstory.equals("Do crossword ")){
+//        dialog.setContentView(R.layout.riddle_dialog);
+//        Log.d("DIALOGTAG","dialog");
+//        Button submitbutton = (Button) dialog.findViewById(R.id.button2);
+//        submitbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Room room = new Room();
+//                EditText crosswordET = (EditText) dialog.findViewById(R.id.editText2);
+//                String answer = crosswordET.getText().toString();
+//                if(answer.equals("pigeon") || answer.equals("Pigeon")){
+//                    Context context = getApplicationContext();
+//                    CharSequence text = "Correct answer!";
+//                    int duration = Toast.LENGTH_SHORT;
+//
+//                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
+//                }
+//                else{
+//                    Context context = getApplicationContext();
+//                    CharSequence text = "Wrong answer";
+//                    int duration = Toast.LENGTH_SHORT;
+//
+//                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
+//                }
+//            }
+//        });
+//
+//    }
 
 }

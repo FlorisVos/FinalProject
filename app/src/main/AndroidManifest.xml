@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Welcome_activity">
+        <activity android:name=".Reader">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
         <activity android:name=".TypeWriterView_activity" />
         <activity android:name=".Fileselect" />
         <activity android:name=".WikiActivity" />
-        <activity android:name=".Reader" />
+        <activity android:name=".Welcome_activity" />
         <activity android:name=".fragment_webview"></activity>
     </application>
 
